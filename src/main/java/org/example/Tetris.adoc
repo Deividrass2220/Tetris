@@ -1,0 +1,13 @@
+= Tetris
+= Shapes
+** Shape as supper class..
+** need a Position
+** User can move shapes in X
+** Shapes has their own gravity (Velocity)
+** Arrow up, change shape position (Rotate)
+** Arrow down speed up the shape
+
+**L
+Triangle
+Square
+Line
