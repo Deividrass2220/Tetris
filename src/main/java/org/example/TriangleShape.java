@@ -3,22 +3,19 @@ package org.example;
 import org.example.lib.Vector;
 
 public class TriangleShape extends Shapes {
-    public double width, height;
+    private HorizontalLine width;
+    private VerticalLine height;
 
-    public TriangleShape(Vector position, Vector velocity) {
+    public TriangleShape(Vector position, Vector velocity, HorizontalLine width, VerticalLine height) {
         super(position, velocity);
+        this.width = width;
+        this.height = height;
     }
 
-
-    public double getTopY() {
-        return position.y - (height / 2);
-    }
-
-    public double getBottomY() {
-        return position.y + (height / 2);
-    }
 
     @Override
     public void draw(TerminalDisplay t) {
+        width.draw(t);
+        height.draw(t);
     }
 }

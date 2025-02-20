@@ -5,9 +5,18 @@
 ** User can move shapes in X
 ** Shapes has their own gravity (Velocity)
 ** Arrow up, change shape position (Rotate)
+    The shapes have a center
+    bounding box
+    we need blocks with position relative than position (center)
+    Value 1,0 to rotate the shapes
+
 ** Arrow down speed up the shape
 
 **L
 Triangle
 Square
 Line
+
+Plan field:
+** We can use array
+** To eliminate the shapes
