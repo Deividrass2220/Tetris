@@ -44,6 +44,7 @@ public class TerminalDisplay {
         try {
             t.setCursorPosition(x, y);
             t.putCharacter(c);
+            t.flush();
         } catch (IOException ignored) {
         }
     }
