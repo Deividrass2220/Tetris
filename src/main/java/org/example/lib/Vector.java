@@ -10,6 +10,14 @@ public class Vector {
         this.y = y;
     }
 
+    public int getRoundedX() {
+        return (int) Math.round(x);
+    }
+
+    public int getRoundedY(){
+        return (int) Math.round(y);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -28,7 +36,7 @@ public class Vector {
     }
 
     public Vector times(double n) {
-       return new Vector(this.x * n, this.y * n);
+        return new Vector(this.x * n, this.y * n);
     }
 
     @Override
