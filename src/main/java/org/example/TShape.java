@@ -36,7 +36,7 @@ public class TShape extends Block {
     }
 
     @Override
-    public Vector[] getSquares() {
+    public Vector[] getRelativePositionsOfSquares() {
         return rotations[rotation];
     }
 }

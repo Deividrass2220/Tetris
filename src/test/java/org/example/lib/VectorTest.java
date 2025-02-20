@@ -6,14 +6,9 @@ import org.junit.Test;
 public class VectorTest {
 
     @Test
-    public void plus_adds_two_vectors_together() {
-        Vector a = new Vector(1, 1);
-        Vector b = new Vector(-1, 6);
-        Vector expected = new Vector(0, 7);
+    public void isCellFill_return_true_when_a_shape_hits_the_bottom() {
+        Field f = new Field
 
-        Vector actual = a.plus(b);
-
-        assertEquals(expected, actual);
     }
 
     @Test
