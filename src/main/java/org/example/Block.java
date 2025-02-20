@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.TerminalDisplay;
+import com.googlecode.lanterna.TextColor;
 import org.example.lib.Vector;
 
 public abstract class Block {
@@ -27,6 +27,7 @@ public abstract class Block {
         for(Vector v : shape) {
             Vector blockPosition = position.plus(v);
             t.putCharacter(blockPosition.getRoundedX(), blockPosition.getRoundedY(), '*');
+            t.setForegroundColor(TextColor.ANSI.RED);
         }
     }
 

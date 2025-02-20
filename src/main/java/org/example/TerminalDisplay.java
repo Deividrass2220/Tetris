@@ -1,6 +1,7 @@
 package org.example;
 
 import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
@@ -26,6 +27,13 @@ public class TerminalDisplay {
             t.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void setForegroundColor(TextColor color) {
+        try {
+            t.setForegroundColor(color);
+        } catch (Exception ignored) {
         }
     }
 
