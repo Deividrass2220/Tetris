@@ -1,5 +1,6 @@
 package org.example;
 
+import com.googlecode.lanterna.TextColor;
 import org.example.lib.Vector;
 
 public class Line extends Block {
@@ -7,7 +8,7 @@ public class Line extends Block {
     private final Vector[][] rotations = new Vector[2][4];
 
     public Line(Vector initialPosition) {
-        super(initialPosition);
+        super(initialPosition, TextColor.ANSI.BLUE);
         rotations[0][0] = new Vector(0, 0);
         rotations[0][1] = new Vector(0, 1);
         rotations[0][2] = new Vector(0, 2);
