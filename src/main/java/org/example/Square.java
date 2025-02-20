@@ -22,7 +22,7 @@ public class Square extends Block {
     }
 
     @Override
-    public Vector[] getSquares() {
+    public Vector[] getRelativePositionsOfSquares() {
         return rotations[rotation];
     }
 }

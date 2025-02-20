@@ -5,7 +5,7 @@ import org.example.lib.Vector;
 
 public abstract class Block {
     Vector position ;
-    private final TextColor.ANSI foregroundColor;
+    public final TextColor.ANSI foregroundColor;
 
     public Block(Vector position, TextColor.ANSI color) {
         this.position = position;
@@ -13,7 +13,7 @@ public abstract class Block {
     }
 
     public abstract void rotate();
-    public abstract Vector[] getSquares();
+    public abstract Vector[] getRelativePositionsOfSquares();
 
     public void setPosition(Vector p) {
         this.position = p;
@@ -24,7 +24,7 @@ public abstract class Block {
     }
 
     public void draw(TerminalDisplay t) {
-        Vector[] shape = getSquares();
+        Vector[] shape = getRelativePositionsOfSquares();
         t.setForegroundColor(foregroundColor);
 
         for(Vector v : shape) {
