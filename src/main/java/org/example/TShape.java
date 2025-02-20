@@ -1,5 +1,6 @@
 package org.example;
 
+import com.googlecode.lanterna.TextColor;
 import org.example.lib.Vector;
 
 public class TShape extends Block {
@@ -7,7 +8,7 @@ public class TShape extends Block {
     private final Vector[][] rotations = new Vector[4][4];
 
     public TShape(Vector initialPosition) {
-        super(initialPosition);
+        super(initialPosition, TextColor.ANSI.MAGENTA);
         rotations[0][0] = new Vector(0, 0);
         rotations[0][1] = new Vector(-1, 0);
         rotations[0][2] = new Vector(1, 0);
