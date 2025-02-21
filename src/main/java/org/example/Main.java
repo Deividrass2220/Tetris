@@ -11,7 +11,6 @@ public class Main {
         Block lShape = new LShape(new Vector(3, 16));
         Block tShape = new TShape(new Vector(7, 16));
         Block line = new Line(new Vector(9, 16));
-
         field.fillBlock(square);
         field.fillBlock(lShape);
         field.fillBlock(tShape);
@@ -29,9 +28,9 @@ public class Main {
                     case 'h':
                         shape.moveLeft(t);
                     case 'k':
-                        shape.moveRight(t);
+                        shape.moveRight(t, field.cells.length);
                 }
-
+                System.out.println(field.cells.length);
             }
             shape.position.y = y;
             if (!field.hasLanded(shape))

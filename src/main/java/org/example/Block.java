@@ -13,6 +13,7 @@ public abstract class Block {
     }
 
     public abstract void rotate();
+
     public abstract Vector[] getRelativePositionsOfSquares();
 
     public void setPosition(Vector p) {
@@ -34,16 +35,19 @@ public abstract class Block {
     }
 
     public void moveLeft(TerminalDisplay t) {
-        Vector position = getPosition();
-        if (position.x < 0) {
-            position.x--;
-            draw(t);
+        Vector[] relativePositionsOfSquares = getRelativePositionsOfSquares();
+
+        for (Vector relativePos : relativePositionsOfSquares) {
+            if (relativePos.x > 0) {
+                position.x--;
+                draw(t);
+            }
         }
     }
 
-    public void moveRight(TerminalDisplay t) {
+    public void moveRight(TerminalDisplay t, int size) {
         Vector position = getPosition();
-        if (position.x < t.getTerminalSize().getColumns()) {
+        if (position.x < size) {
             position.x++;
             draw(t);
         }
