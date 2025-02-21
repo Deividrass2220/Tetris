@@ -39,10 +39,10 @@ public class Main {
             else {
                 field.fillBlock(shape);
                 y = 0;
-                shape = new Line(new Vector(5, 2));
+                shape = field.shapeFactoring(t);
             }
             t.flush();
-            Thread.sleep(1000);
+            Thread.sleep(500);
         }
     }
 

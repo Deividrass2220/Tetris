@@ -4,6 +4,7 @@ import com.googlecode.lanterna.TextColor;
 import org.example.lib.Vector;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Field {
     public final int width, height;
@@ -48,5 +49,19 @@ public class Field {
             Vector absPosition = position.plus(relativePosition);
             cells[absPosition.x][absPosition.y] = color;
         }
+    }
+
+    public Block shapeFactoring(TerminalDisplay t) {
+        Random random = new Random();
+        int randomNumber = Math.abs(random.nextInt(4));
+        System.out.println(randomNumber);
+
+        return switch (randomNumber) {
+            case 0 -> new Square(new Vector(0, 18));
+            case 1 -> new LShape(new Vector(3, 16));
+            case 2 -> new TShape(new Vector(7, 16));
+            case 3 -> new Line(new Vector(9, 16));
+            default -> null;
+        };
     }
 }
