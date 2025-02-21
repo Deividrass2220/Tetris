@@ -1,5 +1,6 @@
 package org.example;
 
+import com.googlecode.lanterna.input.KeyStroke;
 import org.example.lib.Vector;
 
 public class Main {
@@ -17,10 +18,21 @@ public class Main {
         field.fillBlock(line);
 
         Block shape = new Square(new Vector(5, 0));
+        KeyStroke k;
 
         for (int y = 0; y < 18; y++) {
             t.clear();
             field.draw(t);
+            k = t.getNextKeypress();
+            if (k != null) {
+                switch (k.getCharacter()) {
+                    case 'h':
+                        shape.moveLeft(t);
+                    case 'k':
+                        shape.moveRight(t);
+                }
+
+            }
             shape.position.y = y;
             if (!field.hasLanded(shape))
                 shape.draw(t);
