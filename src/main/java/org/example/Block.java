@@ -4,7 +4,7 @@ import com.googlecode.lanterna.TextColor;
 import org.example.lib.Vector;
 
 public abstract class Block {
-    Vector position ;
+    Vector position;
     public final TextColor.ANSI foregroundColor;
 
     public Block(Vector position, TextColor.ANSI color) {
@@ -24,13 +24,28 @@ public abstract class Block {
     }
 
     public void draw(TerminalDisplay t) {
-        Vector[] shape = getRelativePositionsOfSquares();
+        Vector[] relativePositionsOfSquares = getRelativePositionsOfSquares();
         t.setForegroundColor(foregroundColor);
 
-        for(Vector v : shape) {
-            Vector blockPosition = position.plus(v);
-            t.putCharacter(blockPosition.getRoundedX(), blockPosition.getRoundedY(), '*');
+        for (Vector relativePos : relativePositionsOfSquares) {
+            Vector blockPosition = position.plus(relativePos);
+            t.putCharacter(blockPosition.x, blockPosition.y, '*');
         }
     }
 
+    public void moveLeft(TerminalDisplay t) {
+        Vector position = getPosition();
+        if (position.x < 0) {
+            position.x--;
+            draw(t);
+        }
+    }
+
+    public void moveRight(TerminalDisplay t) {
+        Vector position = getPosition();
+        if (position.x < t.getTerminalSize().getColumns()) {
+            position.x++;
+            draw(t);
+        }
+    }
 }

@@ -3,19 +3,11 @@ package org.example.lib;
 import java.util.Objects;
 
 public class Vector {
-    public double x, y;
+    public int x, y;
 
-    public Vector(double x, double y) {
+    public Vector(int x, int y) {
         this.x = x;
         this.y = y;
-    }
-
-    public int getRoundedX() {
-        return (int) Math.round(x);
-    }
-
-    public int getRoundedY(){
-        return (int) Math.round(y);
     }
 
     @Override
@@ -35,7 +27,7 @@ public class Vector {
         return new Vector(this.x + b.x, this.y + b.y);
     }
 
-    public Vector times(double n) {
+    public Vector times(int n) {
         return new Vector(this.x * n, this.y * n);
     }
 

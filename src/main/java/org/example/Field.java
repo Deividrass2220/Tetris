@@ -7,21 +7,21 @@ import java.util.Arrays;
 
 public class Field {
     public final int width, height;
-    public TextColor.ANSI[][] field;
+    public TextColor.ANSI[][] cells;
 
     public Field(int width, int height) {
         this.width = width;
         this.height = height;
-        this.field = new TextColor.ANSI[width][height];
-        for (TextColor.ANSI[] row : field)
+        this.cells = new TextColor.ANSI[width][height];
+        for (TextColor.ANSI[] row : cells)
             Arrays.fill(row, TextColor.ANSI.BLACK);
     }
 
     public void draw(TerminalDisplay t) {
         for (int x = 0; x < width; x++)
             for (int y = 0; y < height; y++)
-                if (field[x][y] != TextColor.ANSI.BLACK) {
-                    t.setForegroundColor(field[x][y]);
+                if (cells[x][y] != TextColor.ANSI.BLACK) {
+                    t.setForegroundColor(cells[x][y]);
                     t.putCharacter(x, y, '*');
                 }
     }
@@ -32,7 +32,7 @@ public class Field {
 
         for (Vector relativePosition : relativePositions) {
             Vector absPosition = position.plus(relativePosition);
-            if (field[absPosition.getRoundedX()][absPosition.getRoundedY() + 1] != TextColor.ANSI.BLACK)
+            if (cells[absPosition.x][absPosition.y + 1] != TextColor.ANSI.BLACK)
                 return true;
         }
 
@@ -46,7 +46,7 @@ public class Field {
 
         for (Vector relativePosition : relativePositions) {
             Vector absPosition = position.plus(relativePosition);
-            field[absPosition.getRoundedX()][absPosition.getRoundedY()] = color;
+            cells[absPosition.x][absPosition.y] = color;
         }
     }
 }
