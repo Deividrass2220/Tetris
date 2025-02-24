@@ -7,22 +7,20 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         TerminalDisplay t = new TerminalDisplay();
         Field field = new Field(10, 20);
-        Block square = new Square(new Vector(0, 18));
-        Block lShape = new LShape(new Vector(3, 16));
-        Block tShape = new TShape(new Vector(7, 16));
-        Block line = new Line(new Vector(9, 16));
-        field.fillBlock(square);
-        field.fillBlock(lShape);
-        field.fillBlock(tShape);
-        field.fillBlock(line);
 
         Block shape = new Square(new Vector(5, 0));
         KeyStroke k;
 
-        for (int y = 0; y < 18; y++) {
+        long fps = 30;
+        long timeDelta = 1000 / fps;
+
+        long start = System.currentTimeMillis();
+
+        do {
             t.clear();
             field.draw(t);
             Vector absolutePosition = field.getAbsoluteShapePosition(shape);
+
             k = t.getNextKeypress();
             if (k != null) {
                 switch (k.getCharacter()) {
@@ -38,18 +36,27 @@ public class Main {
                     }
                 }
             }
-            shape.position.y = y;
-            if (!field.hasLanded(shape))
-                shape.draw(t);
-            else {
-                field.fillBlock(shape);
-                y = 0;
-                shape = field.shapeFactoring(t);
-            }
-            t.flush();
 
-            Thread.sleep(1000);
+            long current = System.currentTimeMillis();
+
+            if (current - start > timeDelta) {
+                if (absolutePosition.y < field.height - 2 && !field.hasLanded(shape)) {
+                    shape.draw(t);
+                    shape.position.y++;
+                } else {
+                    field.fillBlock(shape);
+                    shape = field.shapeFactoring(t);
+                    shape.position.y = 0;
+                }
+                start = current;
+            }
+
+            long timeToRender = System.currentTimeMillis() - start;
+            Thread.sleep(timeDelta - timeToRender);
+
         }
+        while (k == null || k.getCharacter() != 'q');
+        System.exit(1);
     }
 
 }
