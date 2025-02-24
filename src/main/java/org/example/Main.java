@@ -22,15 +22,21 @@ public class Main {
         for (int y = 0; y < 18; y++) {
             t.clear();
             field.draw(t);
+            Vector absolutePosition = field.getAbsoluteShapePosition(shape);
             k = t.getNextKeypress();
             if (k != null) {
                 switch (k.getCharacter()) {
-                    case 'h':
-                        shape.moveLeft(t);
-                    case 'k':
-                        shape.moveRight(t, field.cells.length);
+                    case 'h': {
+                        if (absolutePosition.x > 1)
+                            shape.position.x--;
+                        break;
+                    }
+                    case 'k': {
+                        if (absolutePosition.x < field.width - 1)
+                            shape.position.x++;
+                        break;
+                    }
                 }
-                System.out.println(field.cells.length);
             }
             shape.position.y = y;
             if (!field.hasLanded(shape))
@@ -41,7 +47,8 @@ public class Main {
                 shape = field.shapeFactoring(t);
             }
             t.flush();
-            Thread.sleep(500);
+
+            Thread.sleep(1000);
         }
     }
 

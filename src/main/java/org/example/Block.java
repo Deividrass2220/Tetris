@@ -33,23 +33,4 @@ public abstract class Block {
             t.putCharacter(blockPosition.x, blockPosition.y, '*');
         }
     }
-
-    public void moveLeft(TerminalDisplay t) {
-        Vector[] relativePositionsOfSquares = getRelativePositionsOfSquares();
-
-        for (Vector relativePos : relativePositionsOfSquares) {
-            if (relativePos.x > 0) {
-                position.x--;
-                draw(t);
-            }
-        }
-    }
-
-    public void moveRight(TerminalDisplay t, int size) {
-        Vector position = getPosition();
-        if (position.x < size) {
-            position.x++;
-            draw(t);
-        }
-    }
 }

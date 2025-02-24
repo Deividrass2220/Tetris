@@ -40,6 +40,15 @@ public class Field {
         return false;
     }
 
+    public Vector getAbsoluteShapePosition(Block b) {
+        Vector[] relativePositions = b.getRelativePositionsOfSquares();
+        Vector absolutePosition =  b.position;
+        for (Vector relativePosition : relativePositions) {
+                absolutePosition = absolutePosition.plus(relativePosition);
+        }
+        return absolutePosition;
+    }
+
     public void fillBlock(Block b) {
         Vector[] relativePositions = b.getRelativePositionsOfSquares();
         Vector position = b.getPosition();
@@ -54,7 +63,6 @@ public class Field {
     public Block shapeFactoring(TerminalDisplay t) {
         Random random = new Random();
         int randomNumber = Math.abs(random.nextInt(4));
-        System.out.println(randomNumber);
 
         return switch (randomNumber) {
             case 0 -> new Square(new Vector(0, 18));
